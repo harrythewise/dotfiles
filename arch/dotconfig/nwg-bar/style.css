@@ -1,0 +1,35 @@
+#bar {
+    font-size: 24px;
+    font-family: JetBrains Mono;
+}
+
+button,
+image {
+    border-radius: 25px;
+    box-shadow: none;
+    color: white;
+}
+
+image {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 40px;
+    margin: 20px;
+    background: #1e1e2e;
+}
+
+button:hover {
+    background-color: #f2cdcd;
+    color: #24273a;
+}
+
+grid {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+window {
+    background-color: rgba (0, 0, 0, 0);
+}

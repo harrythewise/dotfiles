@@ -1,0 +1,107 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 40,
+    "margin": "0 0 0 0",
+    "modules-left": ["custom/power","custom/launcher","idle_inhibitor", "user", "hyprland/workspaces", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/language", "pulseaudio", "temperature", "cpu", "memory", "network", ], 
+
+	"custom/launcher": {
+      	"format":"",
+       	"on-click": "albert toggle",
+      	"tooltip": false,
+	},
+
+    "custom/power": {
+      	"format":"󰣇",
+       	"on-click": "nwg-bar",
+      	"tooltip": false,
+    },
+
+	"idle_inhibitor": {
+	    "format": "{icon}",
+	    "format-icons": {
+            "activated": "",
+            "deactivated": "󰒲"
+	    },
+        "start-activated": true
+    },
+
+	 "user": {
+		"format": "Up: {work_H}:{work_M}",
+		"interval": 60,
+    },
+
+    "hyprland/workspaces":{
+		"format": "{id}",
+		"on-click": "activate"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "{:%A %B %d %Y | %H:%M}",
+        "format": " {:%a %d %b   %H:%M}",	
+        "format-alt": " {:%d/%m/%Y   %H:%M:%S}",
+        "interval": 1
+    },
+
+
+	"hyprland/language": {
+		"format": ": {}",
+		"format-en": "EN",
+		"format-cs": "CZ"
+	},
+
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "󰕾", ""]
+        },
+
+		"on-click": "pavucontrol",
+		"on-scroll-up": "pactl set-sink-volume 0 +5%",
+		"on-scroll-down": "pactl set-sink-volume 0 -5%",
+		"ignored-sinks": ["Easy Effects Sink"]
+    },
+    
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C"
+    },
+
+    "cpu": {
+        "format": "{usage: >3}%",
+        "on-click": "alacritty -e htop"
+    },
+
+    "memory": {
+        "format": ": {percentage}%",
+        "on-click": "alacritty -e htop"
+    },
+   
+     "network": {
+        "format": "⚠  Disabled",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰇄  Wired",
+        "format-disconnected": "⚠  Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+}

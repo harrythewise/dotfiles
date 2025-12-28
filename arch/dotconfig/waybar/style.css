@@ -1,0 +1,131 @@
+@import "colors.css";
+
+* {
+  color: @text;
+  border: 0px;
+  padding: 0px;
+  font-family: JetBrains Mono;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#custom-power,
+#custom-launcher,
+#idle_inhibitor,
+#user,
+#workspaces,
+#window,
+#tray,
+#clock,
+#language,
+#pulseaudio,
+#temperature,
+#cpu,
+#memory,
+#network {
+  background-color: @base;
+  padding: 0px 5px 0px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+#custom-power {
+  color: @blue;
+  padding-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#custom-launcher {
+  color: @white;
+  padding-right: 5px;
+  margin-right: 5px;
+}
+
+#idle_inhibitor {
+  color: @yellow;
+  padding-right: 5px;
+  margin-right: 5px;
+}
+
+#user {
+  margin-right: 5px;
+}
+
+#workspaces {
+  margin-right: 5px;
+}
+
+#workspaces button:hover * {
+  color: @red;
+}
+
+#workspaces button.active * {
+  color: @green;
+}
+
+#window {
+  margin-right: 5px;
+}
+
+#clock {
+  color: @sky;
+}
+
+#language {
+  color: @mauve;
+  margin-right: 5px;
+}
+
+#pulseaudio {
+  color: @flamingo;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+}
+
+#pulseaudio.muted {
+  color: #3b4252;
+}
+
+#temperature {
+  color: @sky;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#cpu {
+  color: @sky;
+  border-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+#memory {
+  color: @sky;
+  margin-right: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+#network {
+  color: @green;
+  margin-right: 5px;
+}
+
+#network.disabled {
+  color: @gray;
+}
+
+#network.disconnected {
+  color: @red;
+}
