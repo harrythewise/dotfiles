@@ -21,6 +21,7 @@ config.default_cwd = "$HOME"
 
 local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
 local schema = {
+    wezterm.home_dir,
     wezterm.home_dir .. "/.config/wezterm",
     wezterm.home_dir .. "/.config/nvim",
 

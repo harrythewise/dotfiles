@@ -3,6 +3,20 @@ return {
 
     config = function()
         local dap = require("dap")
+        local jdtls = require("jdtls")
+
+        require('jdtls.dap').setup_dap()
+
+        local old_dap_function = dap.adapters.java
+        dap.adapters.java = function(callback, configDap)
+            if configDap.name == "Test Method" then
+                jdtls.test_nearest_method()
+            elseif configDap.name == "Test Class" then
+                jdtls.test_class()
+            else
+                old_dap_function(callback, configDap)
+            end
+        end
 
         local pretty_printing = {
             {
@@ -39,6 +53,16 @@ return {
                 port = "8787",
                 setupCommands = pretty_printing,
             },
+            {
+                type = 'java',
+                request = 'launch',
+                name = "Test Class",
+            },
+            {
+                type = 'java',
+                request = 'launch',
+                name = "Test Method",
+            }
         }
 
         dap.adapters.lldb = {
