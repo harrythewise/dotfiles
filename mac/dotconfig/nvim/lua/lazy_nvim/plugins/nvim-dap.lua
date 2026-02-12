@@ -9,10 +9,14 @@ return {
 
         local old_dap_function = dap.adapters.java
         dap.adapters.java = function(callback, configDap)
+            if configDap.request == "launch" and not configDap.vmArgs then
+                configDap.vmArgs = vim.fn.input("Arguments: ")
+            end
+
             if configDap.name == "Test Method" then
-                jdtls.test_nearest_method()
+                jdtls.test_nearest_method({ config_overrides = { vmArgs = configDap.vmArgs } })
             elseif configDap.name == "Test Class" then
-                jdtls.test_class()
+                jdtls.test_class({ config_overrides = { vmArgs = configDap.vmArgs } })
             else
                 old_dap_function(callback, configDap)
             end

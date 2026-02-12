@@ -134,3 +134,9 @@ cmd-ctrl-alt-shift-k = 'move-workspace-to-monitor prev'
 if.window-title-regex-substring = 'Lara|Scenic View|Mango'
 check-further-callbacks = true 
 run = 'layout floating'
+
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'Cisco Secure'
+check-further-callbacks = true 
+run = 'layout floating'

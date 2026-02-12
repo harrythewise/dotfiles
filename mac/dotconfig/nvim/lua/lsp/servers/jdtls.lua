@@ -61,6 +61,12 @@ return {
 
     filetypes = { 'java' },
     root_dir = jdtls_root_dir,
+    on_attach = function(client, bufrn)
+        if vim.fn.filereadable(formatter_path) ~= 1 then
+            vim.notify("ERROR: Java formatter.xml not found at: " .. formatter_path)
+        end
+    end,
+
     settings = {
         java = {
             settings = {
@@ -116,5 +122,9 @@ return {
 
     init_options = {
         bundles = setup_bundles(),
+        extendedClientCapabilities = {
+            classFileContentsSupport = true,
+            reloadBundles = true
+        }
     },
 }
