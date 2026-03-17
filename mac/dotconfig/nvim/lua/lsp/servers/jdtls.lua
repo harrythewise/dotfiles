@@ -1,10 +1,11 @@
 local java_home = vim.fn.expand("~/.sdkman/candidates/java/21.0.7-tem/")
 
-local project_root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]) or vim.fn.getcwd()
-local jdtls_root_dir = vim.fs.dirname(vim.fs.find({ "pom.xml" })[1], { upward = false }) or project_root_dir
-local jdtls_data_dir = project_root_dir .. "/.nvim/java/jdtls"
+local root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]) or vim.fn.getcwd()
 
-local formatter_path = project_root_dir .. "/.nvim/java/formatter.xml"
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local data_dir = vim.fn.expand("~/.cache/nvim/jdtls/projects") .. project_name
+
+local formatter_path = root_dir .. "/.nvim/java/formatter.xml"
 local java_settings_prefs_path = vim.fn.expand("~/Projects/Templates/settings.prefs")
 
 local function setup_bundles()
@@ -47,6 +48,7 @@ return {
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
+        "-javaagent:" .. vim.fn.expand("~/Projects/Tools/Neovim/jdtls/plugins/lombok.jar"),
         "-jar",
         vim.fn.expand(
             "~/Projects/Tools/Neovim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar"
@@ -56,11 +58,11 @@ return {
             "~/Projects/Tools/Neovim/jdtls/config_mac_arm/"
         ),
         "-data",
-        jdtls_data_dir,
+        data_dir,
     },
 
     filetypes = { 'java' },
-    root_dir = jdtls_root_dir,
+    root_dir = root_dir,
     on_attach = function(client, bufrn)
         if vim.fn.filereadable(formatter_path) ~= 1 then
             vim.notify("ERROR: Java formatter.xml not found at: " .. formatter_path)
