@@ -3,7 +3,7 @@ local java_home = vim.fn.expand("~/.sdkman/candidates/java/21.0.7-tem/")
 local root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]) or vim.fn.getcwd()
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local data_dir = vim.fn.expand("~/.cache/nvim/jdtls/projects") .. project_name
+local data_dir = vim.fn.expand("~/.cache/nvim/jdtls/projects/") .. project_name
 
 local formatter_path = root_dir .. "/.nvim/java/formatter.xml"
 local java_settings_prefs_path = vim.fn.expand("~/Projects/Templates/settings.prefs")
