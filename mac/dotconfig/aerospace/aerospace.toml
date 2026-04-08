@@ -125,7 +125,7 @@ cmd-b = 'layout floating tiling'
 
 cmd-m = 'fullscreen'
 
-cmd-g = 'layout horizontal vertical'
+cmd-g = 'layout tiles horizontal vertical'
 
 cmd-ctrl-alt-shift-j = 'move-workspace-to-monitor next'
 cmd-ctrl-alt-shift-k = 'move-workspace-to-monitor prev'
@@ -134,7 +134,6 @@ cmd-ctrl-alt-shift-k = 'move-workspace-to-monitor prev'
 if.window-title-regex-substring = 'Lara|Scenic View|Mango'
 check-further-callbacks = true 
 run = 'layout floating'
-
 
 [[on-window-detected]]
 if.window-title-regex-substring = 'Cisco Secure'
