@@ -1,6 +1,8 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+config.term = "wezterm"
+
 config.tab_bar_at_bottom = true
 
 config.color_scheme = "Tokyo Night Moon"

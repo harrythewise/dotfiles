@@ -1,7 +1,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export XDG_CONFIG_HOME="$HOME/.config"
-
+export LC_ALL=en_US.UTF-8
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/Library/Android/sdk/platform-tools/:$PATH
 export PATH=/opt/homebrew/bin:$PATH
