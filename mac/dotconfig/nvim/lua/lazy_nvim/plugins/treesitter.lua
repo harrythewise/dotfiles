@@ -1,28 +1,33 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
     config = function()
-        require 'nvim-treesitter.configs'.setup({
-            -- A list of parser names, or "all" (the five listed parsers should always be installed)
-            ensure_installed = { "cpp", "java", "c", "lua", "vim", "vimdoc", "sql", "latex", "markdown", "html", "comment", "yaml", "php", "css", "bash", "glsl" },
+        local ts = require("nvim-treesitter")
+        local languages = {
+            "cpp", "java", "c", "lua", "vim", "vimdoc", "sql", "latex", "markdown", "html", "comment", "yaml", "php",
+            "css", "bash", "glsl", "kotlin"
+        }
 
-            -- Install parsers synchronously (only applied to `ensure_installed`)
-            sync_install = false,
+        ts.setup({})
+        ts.install(languages)
 
-            -- Automatically install missing parsers when entering buffer
-            -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-            auto_install = false,
+        -- Treesitter features for installed languages must be enabled manually
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = languages,
+            callback = function()
+                -- Enable native Neovim treesitter highlighting
+                vim.treesitter.start()
 
-            -- indent = {
-            --   enable = true
-            -- },
+                -- Configure code folding
+                vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                vim.wo.foldmethod = "expr"
+                vim.wo.foldlevel = 99
 
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-                disable = { "csv" },
-            },
+                -- Enable treesitter-based indentation
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
         })
-
-        vim.treesitter.language.register('c', 'lisp')
-    end
+    end,
 }
