@@ -5,17 +5,22 @@ return {
     build = ":TSUpdate",
     config = function()
         local ts = require("nvim-treesitter")
-        local languages = {
+        local parsers = {
             "cpp", "java", "c", "lua", "vim", "vimdoc", "sql", "latex", "markdown", "html", "comment", "yaml", "php",
-            "css", "bash", "glsl", "kotlin"
+            "css", "bash", "glsl", "kotlin", "tsx", "typescript", "javascript"
+        }
+
+        local filetypes = {
+            "cpp", "java", "c", "lua", "vim", "vimdoc", "sql", "latex", "markdown", "html", "comment", "yaml", "php",
+            "css", "bash", "sh", "glsl", "kotlin", "typescriptreact", "javascriptreact", "typescript", "javascript"
         }
 
         ts.setup({})
-        ts.install(languages)
+        ts.install(parsers)
 
         -- Treesitter features for installed languages must be enabled manually
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = languages,
+            pattern = filetypes,
             callback = function()
                 -- Enable native Neovim treesitter highlighting
                 vim.treesitter.start()

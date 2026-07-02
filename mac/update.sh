@@ -13,7 +13,6 @@ mkdir ./$HOME_FOLDER
 cp ~/.zprofile ./$HOME_FOLDER
 cp ~/.zshrc ./$HOME_FOLDER
 cp -r ~/.homebrew ./$HOME_FOLDER
-cp -r ~/.terminfo ./$HOME_FOLDER
 
 cp -r ~/.config/nvim ./$CONFIG_FOLDER
 cp -r ~/.config/sioyek ./$CONFIG_FOLDER

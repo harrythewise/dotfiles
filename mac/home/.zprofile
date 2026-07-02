@@ -9,11 +9,14 @@ export PATH=$HOME/.cargo/bin/:$PATH
 export PATH="/opt/homebrew/opt/ruby/bin/":$PATH
 export PATH="$HOME/Projects/Tools/apache-cxf/latest/bin/":$PATH
 export PATH="/opt/homebrew/Cellar/llvm/21.1.0/bin":$PATH
+export PATH="/opt/homebrew/Cellar/i686-elf-binutils/2.46.1/bin/":$PATH
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 export ANDROID_HOME="/Users/harry/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools/bin/":$PATH
-export PATH="$ANDROID_HOME/emulator":$PATH
+export PATH="$ANDROID_HOME/emulator/":$PATH
 export PATH="$ANDROID_HOME/platform-tools/":$PATH
+
 
 # C/C++ specific 
 SO_LIBS="/usr/local/lib":"/opt/homebrew/lib"
