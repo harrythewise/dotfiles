@@ -13,10 +13,11 @@ return {
                 cpp = { "clang-format" },
                 lua = { "stylua" },
                 yaml = { "yamlfmt" },
+                java = { "google-java-format" },
             },
 
             format_on_save = {
-                timeout_ms = 200,
+                timeout_ms = 500,
                 lsp_format = "last",
             },
         })

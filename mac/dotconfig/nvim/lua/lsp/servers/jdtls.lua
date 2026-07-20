@@ -16,8 +16,8 @@ local function setup_bundles()
         ),
     }
 
-    local java_test_bundles = vim.split(
-        vim.fn.glob("~/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", 1), "\n")
+    local java_test_bundles =
+        vim.split(vim.fn.glob("~/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", 1), "\n")
 
     local excluded = {
         "com.microsoft.java.test.runner-jar-with-dependencies.jar",
@@ -50,18 +50,14 @@ return {
         "java.base/java.lang=ALL-UNNAMED",
         "-javaagent:" .. vim.fn.expand("~/Projects/Tools/Neovim/jdtls/plugins/lombok.jar"),
         "-jar",
-        vim.fn.expand(
-            "~/Projects/Tools/Neovim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar"
-        ),
+        vim.fn.expand("~/Projects/Tools/Neovim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar"),
         "-configuration",
-        vim.fn.expand(
-            "~/Projects/Tools/Neovim/jdtls/config_mac_arm/"
-        ),
+        vim.fn.expand("~/Projects/Tools/Neovim/jdtls/config_mac_arm/"),
         "-data",
         data_dir,
     },
 
-    filetypes = { 'java' },
+    filetypes = { "java" },
     root_dir = root_dir,
     on_attach = function(client, bufrn)
         if vim.fn.filereadable(formatter_path) ~= 1 then
@@ -76,7 +72,7 @@ return {
             },
 
             signatureHelp = {
-                enabled = "true",
+                enabled = true,
             },
 
             configuration = {
@@ -84,7 +80,7 @@ return {
             },
 
             saveActions = {
-                organizeImports = "true",
+                organizeImports = vim.fn.filereadable(formatter_path) == 1,
             },
 
             sources = {
@@ -96,7 +92,7 @@ return {
 
             import = {
                 maven = {
-                    enabled = "false",
+                    enabled = false,
                 },
                 exclusions = {
                     "**/node_modules/**",
@@ -108,9 +104,10 @@ return {
             },
 
             format = {
-                enabled = "true",
+                enabled = vim.fn.filereadable(formatter_path) == 1,
                 settings = {
                     url = formatter_path,
+                    profile = "JavaFormatter",
                 },
             },
 
@@ -126,7 +123,7 @@ return {
         bundles = setup_bundles(),
         extendedClientCapabilities = {
             classFileContentsSupport = true,
-            reloadBundles = true
-        }
+            reloadBundles = true,
+        },
     },
 }
