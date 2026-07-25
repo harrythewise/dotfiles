@@ -5,7 +5,7 @@ config.term = "wezterm"
 
 config.tab_bar_at_bottom = true
 
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Kanagawa (Gogh)"
 config.window_padding = {
     left = 0,
     right = 0,
