@@ -13,7 +13,8 @@ export PATH="/opt/homebrew/Cellar/i686-elf-binutils/2.46.1/bin/":$PATH
 export PATH="/opt/homebrew/Cellar/i686-elf-gcc/16.1.0/bin/":$PATH
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-export ANDROID_HOME="/Users/harry/Library/Android/sdk"
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$ANDROID_HOME/tools/bin/":$PATH
 export PATH="$ANDROID_HOME/emulator/":$PATH
 export PATH="$ANDROID_HOME/platform-tools/":$PATH
