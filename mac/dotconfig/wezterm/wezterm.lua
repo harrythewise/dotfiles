@@ -26,10 +26,12 @@ local schema = {
     wezterm.home_dir,
     wezterm.home_dir .. "/.config/wezterm",
     wezterm.home_dir .. "/.config/nvim",
+    wezterm.home_dir .. "/.codex",
 
     sessionizer.FdSearch({
         wezterm.home_dir .. "/Projects",
         max_depth = 5,
+        include_submodules = true,
         fd_path = "/opt/homebrew/bin/fd",
     }),
 
